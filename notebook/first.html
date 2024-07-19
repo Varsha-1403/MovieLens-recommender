@@ -1,0 +1,1740 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.554">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Varshitha Indugu">
+
+<title>My Movie Recommendation System</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="first_files/libs/clipboard/clipboard.min.js"></script>
+<script src="first_files/libs/quarto-html/quarto.js"></script>
+<script src="first_files/libs/quarto-html/popper.min.js"></script>
+<script src="first_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="first_files/libs/quarto-html/anchor.min.js"></script>
+<link href="first_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="first_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="first_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="first_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="first_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#abstract" id="toc-abstract" class="nav-link" data-scroll-target="#abstract">Abstract</a></li>
+  </ul></li>
+  <li><a href="#table-of-contents" id="toc-table-of-contents" class="nav-link" data-scroll-target="#table-of-contents">Table of Contents</a></li>
+  <li><a href="#methodology" id="toc-methodology" class="nav-link" data-scroll-target="#methodology">Methodology</a>
+  <ul class="collapse">
+  <li><a href="#methodology-1" id="toc-methodology-1" class="nav-link" data-scroll-target="#methodology-1">Methodology</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">My Movie Recommendation System</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Varshitha Indugu </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">Invalid Date</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p><strong>Movie Recommendation System</strong></p>
+<p>In the age of digital entertainment, finding the perfect movie can be overwhelming. Our innovative Movie Recommendation System simplifies this choice by harnessing the power of advanced algorithms and machine learning. Tailored to individual preferences and viewing history, our system intelligently suggests films that match your unique taste. Whether you are in the mood for a heartwarming drama, an action-packed thriller, or a side-splitting comedy, our recommendation engine ensures you spend less time searching and more time enjoying the cinematic experiences you love. Dive into a world of personalized movie suggestions and let us guide you to your next favorite film.</p>
+<section id="abstract" class="level2">
+<h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
+<p><strong>Abstract</strong></p>
+<p>This project presents a sophisticated movie recommendation system leveraging a hybrid approach, combining both collaborative filtering and content-based filtering techniques. By integrating these methodologies, our system effectively addresses the limitations of individual approaches, enhancing the accuracy and relevance of recommendations. Collaborative filtering captures the collective preferences and viewing patterns of users, while content-based filtering analyzes the intrinsic attributes of movies such as genre, director, and cast. The synergy of these methods allows for personalized and precise movie suggestions, catering to the nuanced tastes of diverse audiences. Our hybrid recommendation system not only improves user satisfaction but also maximizes engagement by providing tailored cinematic experiences.</p>
+</section>
+</section>
+<section id="table-of-contents" class="level1">
+<h1>Table of Contents</h1>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#abstract">Abstract</a></li>
+<li><a href="#methodology">Methodology</a></li>
+<li><a href="#results">Results</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+</section>
+<section id="methodology" class="level1">
+<h1>Methodology</h1>
+<section id="methodology-1" class="level3">
+<h3 class="anchored" data-anchor-id="methodology-1">Methodology</h3>
+<p>In this project, we implemented a movie recommendation system using a hybrid approach that combines collaborative filtering and content-based filtering techniques.</p>
+<section id="data-preparation" class="level4">
+<h4 class="anchored" data-anchor-id="data-preparation">Data Preparation</h4>
+<p>First, we merged the datasets containing movie ratings and movie details based on the <code>movieId</code> attribute. The combined data was then formatted to include only the necessary columns for the recommendation process. We used the Surprise library’s <code>Reader</code> and <code>Dataset</code> classes to load the data, and subsequently split it into training and testing sets to evaluate the model’s performance.</p>
+</section>
+<section id="collaborative-filtering" class="level4">
+<h4 class="anchored" data-anchor-id="collaborative-filtering">Collaborative Filtering</h4>
+<p>For collaborative filtering, we employed the Singular Value Decomposition (SVD) algorithm. A pre-trained SVD model was loaded and used to make predictions on the test set. The predictions were rounded to the nearest allowable rating value. We then aggregated the top N movie recommendations for each user by sorting the predicted ratings in descending order.</p>
+</section>
+<section id="content-based-filtering" class="level4">
+<h4 class="anchored" data-anchor-id="content-based-filtering">Content-Based Filtering</h4>
+<p>In the content-based filtering part, we utilized movie metadata, including genome tags, to create a feature matrix. We merged the genome scores with genome tags and pivoted the data to form a matrix of movies and their associated tag relevance scores. Each movie’s combined features were derived by concatenating its genres and relevant tags. These features were converted into TF-IDF vectors using a pre-trained TF-IDF vectorizer. To reduce the dimensionality of the feature vectors, we applied TruncatedSVD. Cosine similarity was then calculated between these reduced vectors to determine movie similarities.</p>
+</section>
+<section id="hybrid-recommendation-system" class="level4">
+<h4 class="anchored" data-anchor-id="hybrid-recommendation-system">Hybrid Recommendation System</h4>
+<p>The hybrid recommendation system integrates the outputs from both collaborative and content-based filtering methods. For a given user, collaborative filtering provides an initial list of recommended movies. If no collaborative recommendations are available for a new user, the system defaults to recommending popular movies based on average ratings and the number of ratings. The content-based filtering approach complements the collaborative filtering results by recommending movies similar to those the user has rated highly. The final list of recommendations combines scores from both methods to generate a ranked list of movies tailored to the user’s preferences.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>c:\source\Orion_Innovation_internship_repos\MovieLens-recommender\.venv\lib\site-packages\dask\dataframe\__init__.py:31: FutureWarning: 
+Dask dataframe query planning is disabled because dask-expr is not installed.
+
+You can install it with `pip install dask[dataframe]` or `conda install dask`.
+This will raise in a future version.
+
+  warnings.warn(msg, FutureWarning)</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>movies<span class="op">=</span>pd.read_csv(<span class="st">'C:\source\Orion_Innovation_internship_repos\MovieLens-recommender\Dataset\movie.csv'</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(movies)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(movies.head())</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(movies.tail())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>       movieId                               title  \
+0            1                    Toy Story (1995)   
+1            2                      Jumanji (1995)   
+2            3             Grumpier Old Men (1995)   
+3            4            Waiting to Exhale (1995)   
+4            5  Father of the Bride Part II (1995)   
+...        ...                                 ...   
+27273   131254        Kein Bund für's Leben (2007)   
+27274   131256       Feuer, Eis &amp; Dosenbier (2002)   
+27275   131258                  The Pirates (2014)   
+27276   131260                 Rentun Ruusu (2001)   
+27277   131262                    Innocence (2014)   
+
+                                            genres  
+0      Adventure|Animation|Children|Comedy|Fantasy  
+1                       Adventure|Children|Fantasy  
+2                                   Comedy|Romance  
+3                             Comedy|Drama|Romance
+4                                           Comedy  
+...                                            ...  
+27273                                       Comedy  
+27274                                       Comedy  
+27275                                    Adventure  
+27276                           (no genres listed)  
+27277                     Adventure|Fantasy|Horror  
+
+[27278 rows x 3 columns]
+   movieId                               title  \
+0        1                    Toy Story (1995)   
+1        2                      Jumanji (1995)   
+2        3             Grumpier Old Men (1995)   
+3        4            Waiting to Exhale (1995)   
+4        5  Father of the Bride Part II (1995) 
+
+                                        genres  
+0  Adventure|Animation|Children|Comedy|Fantasy  
+1                   Adventure|Children|Fantasy  
+2                               Comedy|Romance  
+3                         Comedy|Drama|Romance  
+4                                       Comedy  
+       movieId                          title                    genres
+27273   131254   Kein Bund für's Leben (2007)                    Comedy
+27274   131256  Feuer, Eis &amp; Dosenbier (2002)                    Comedy
+27275   131258             The Pirates (2014)                 Adventure
+27276   131260            Rentun Ruusu (2001)        (no genres listed)
+27277   131262               Innocence (2014)  Adventure|Fantasy|Horror</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ratings<span class="op">=</span>pd.read_csv(<span class="st">'C:/source/Orion_Innovation_internship_repos/MovieLens-recommender/Dataset/rating.csv'</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ratings)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ratings.head())</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ratings.tail())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>         userId  movieId  rating         timestamp
+0             1        2     3.5  02-04-2005 23:53
+1             1       29     3.5  02-04-2005 23:31
+2             1       32     3.5  02-04-2005 23:33
+3             1       47     3.5  02-04-2005 23:32
+4             1       50     3.5  02-04-2005 23:29
+...         ...      ...     ...               ...
+1048570    7120      168     5.0  02-04-2007 19:44
+1048571    7120      253     4.0  02-04-2007 19:30
+1048572    7120      260     5.0  02-04-2007 19:27
+1048573    7120      261     4.0  02-04-2007 19:49
+1048574    7120      266     3.5  02-04-2007 19:34
+
+[1048575 rows x 4 columns]
+   userId  movieId  rating         timestamp
+0       1        2     3.5  02-04-2005 23:53
+1       1       29     3.5  02-04-2005 23:31
+2       1       32     3.5  02-04-2005 23:33
+3       1       47     3.5  02-04-2005 23:32
+4       1       50     3.5  02-04-2005 23:29
+         userId  movieId  rating         timestamp
+1048570    7120      168     5.0  02-04-2007 19:44
+1048571    7120      253     4.0  02-04-2007 19:30
+1048572    7120      260     5.0  02-04-2007 19:27
+1048573    7120      261     4.0  02-04-2007 19:49
+1048574    7120      266     3.5  02-04-2007 19:34</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tags<span class="op">=</span>pd.read_csv(<span class="st">'C:/source/Orion_Innovation_internship_repos/MovieLens-recommender/Dataset/tag.csv'</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tags)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tags.head())</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tags.tail())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>        userId  movieId            tag         timestamp
+0           18     4141    Mark Waters  24-04-2009 18:19
+1           65      208      dark hero  10-05-2013 01:41
+2           65      353      dark hero  10-05-2013 01:41
+3           65      521  noir thriller  10-05-2013 01:39
+4           65      592      dark hero  10-05-2013 01:41
+...        ...      ...            ...               ...
+465559  138446    55999        dragged  23-01-2013 23:29
+465560  138446    55999  Jason Bateman  23-01-2013 23:29
+465561  138446    55999         quirky  23-01-2013 23:29
+465562  138446    55999            sad  23-01-2013 23:29
+465563  138472      923  rise to power  02-11-2007 21:12
+
+[465564 rows x 4 columns]
+   userId  movieId            tag         timestamp
+0      18     4141    Mark Waters  24-04-2009 18:19
+1      65      208      dark hero  10-05-2013 01:41
+2      65      353      dark hero  10-05-2013 01:41
+3      65      521  noir thriller  10-05-2013 01:39
+4      65      592      dark hero  10-05-2013 01:41
+        userId  movieId            tag         timestamp
+465559  138446    55999        dragged  23-01-2013 23:29
+465560  138446    55999  Jason Bateman  23-01-2013 23:29
+465561  138446    55999         quirky  23-01-2013 23:29
+465562  138446    55999            sad  23-01-2013 23:29
+465563  138472      923  rise to power  02-11-2007 21:12</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>g_score<span class="op">=</span>pd.read_csv(<span class="st">'C:/source/Orion_Innovation_internship_repos/MovieLens-recommender/Dataset/genome_scores.csv'</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(g_score)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(g_score.head())</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(g_score.tail())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>          movieId  tagId  relevance
+0               1      1    0.02500
+1               1      2    0.02500
+2               1      3    0.05775
+3               1      4    0.09675
+4               1      5    0.14675
+...           ...    ...        ...
+11709763   131170   1124    0.58775
+11709764   131170   1125    0.01075
+11709765   131170   1126    0.01575
+11709766   131170   1127    0.11450
+11709767   131170   1128    0.02175
+
+[11709768 rows x 3 columns]
+   movieId  tagId  relevance
+0        1      1    0.02500
+1        1      2    0.02500
+2        1      3    0.05775
+3        1      4    0.09675
+4        1      5    0.14675
+          movieId  tagId  relevance
+11709763   131170   1124    0.58775
+11709764   131170   1125    0.01075
+11709765   131170   1126    0.01575
+11709766   131170   1127    0.11450
+11709767   131170   1128    0.02175</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>g_tag<span class="op">=</span>pd.read_csv(<span class="st">'C:/source/Orion_Innovation_internship_repos/MovieLens-recommender/Dataset/genome_tags.csv'</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(g_tag)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(g_tag.head())</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(g_tag.tail())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>      tagId           tag
+0         1           007
+1         2  007 (series)
+2         3  18th century
+3         4         1920s
+4         5         1930s
+...     ...           ...
+1123   1124       writing
+1124   1125         wuxia
+1125   1126          wwii
+1126   1127        zombie
+1127   1128       zombies
+
+[1128 rows x 2 columns]
+   tagId           tag
+0      1           007
+1      2  007 (series)
+2      3  18th century
+3      4         1920s
+4      5         1930s
+      tagId      tag
+1123   1124  writing
+1124   1125    wuxia
+1125   1126     wwii
+1126   1127   zombie
+1127   1128  zombies</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>links<span class="op">=</span>pd.read_csv(<span class="st">'C:/source/Orion_Innovation_internship_repos/MovieLens-recommender/Dataset/link.csv'</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(links)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>       movieId   imdbId    tmdbId
+0            1   114709     862.0
+1            2   113497    8844.0
+2            3   113228   15602.0
+3            4   114885   31357.0
+4            5   113041   11862.0
+...        ...      ...       ...
+27273   131254   466713    4436.0
+27274   131256   277703    9274.0
+27275   131258  3485166  285213.0
+27276   131260   249110   32099.0
+27277   131262  1724965  286971.0
+
+[27278 rows x 3 columns]</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(movies.isnull().<span class="bu">sum</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>movieId    0
+title      0
+genres     0
+dtype: int64</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ratings.isnull().<span class="bu">sum</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>userId       0
+movieId      0
+rating       0
+timestamp    0
+dtype: int64</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(links.describe())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>             movieId        imdbId         tmdbId
+count   27278.000000  2.727800e+04   27026.000000
+mean    59855.480570  5.781860e+05   63846.683083
+std     44429.314697  7.804707e+05   69862.134497
+min         1.000000  5.000000e+00       2.000000
+25%      6931.250000  7.741725e+04   15936.500000
+50%     68068.000000  1.524350e+05   39468.500000
+75%    100293.250000  9.062715e+05   82504.000000
+max    131262.000000  4.530184e+06  421510.000000</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(g_score.describe())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>            movieId         tagId     relevance
+count  1.170977e+07  1.170977e+07  1.170977e+07
+mean   2.584297e+04  5.645000e+02  1.164833e-01
+std    3.467615e+04  3.256254e+02  1.542463e-01
+min    1.000000e+00  1.000000e+00  2.500000e-04
+25%    2.926000e+03  2.827500e+02  2.425000e-02
+50%    6.017000e+03  5.645000e+02  5.650000e-02
+75%    4.606200e+04  8.462500e+02  1.415000e-01
+max    1.311700e+05  1.128000e+03  1.000000e+00</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(g_tag.describe())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>             tagId
+count  1128.000000
+mean    564.500000
+std     325.769857
+min       1.000000
+25%     282.750000
+50%     564.500000
+75%     846.250000
+max    1128.000000</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tags.describe())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>              userId        movieId
+count  465564.000000  465564.000000
+mean    68712.354263   32627.762920
+std     41877.674053   36080.241157
+min        18.000000       1.000000
+25%     28780.000000    2571.000000
+50%     70201.000000    7373.000000
+75%    107322.000000   62235.000000
+max    138472.000000  131258.000000</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>genres_split <span class="op">=</span> movies[<span class="st">'genres'</span>].<span class="bu">str</span>.split(<span class="st">'|'</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>unique_genres <span class="op">=</span> <span class="bu">set</span>(genre <span class="cf">for</span> sublist <span class="kw">in</span> genres_split <span class="cf">for</span> genre <span class="kw">in</span> sublist)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Unique genres:"</span>, unique_genres)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>Unique genres: {'Romance', 'Drama', 'Adventure', '(no genres listed)', 'IMAX', 'Musical', 'Fantasy', 'War', 'Horror', 'Comedy', 'Crime', 'Documentary', 'Action', 'Children', 'Thriller', 'Film-Noir', 'Sci-Fi', 'Animation', 'Western', 'Mystery'}</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Distribution of ratings</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>sns.histplot(ratings[<span class="st">'rating'</span>], bins<span class="op">=</span><span class="dv">10</span>, kde<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of Movie Ratings'</span>)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Rating'</span>)</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Frequency'</span>)</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="report_files/report_14_0.png" class="img-fluid figure-img"></p>
+<figcaption>png</figcaption>
+</figure>
+</div>
+<p>The graph shows that most users rate movies highly, with ratings of 4 being the most frequent, indicating generally positive feedback. Lower ratings (1 and 2) are much less common, suggesting fewer movies are perceived very negatively.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Distribution of ratings with kde true</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>sns.histplot(ratings[<span class="st">'rating'</span>], bins<span class="op">=</span><span class="dv">10</span>, kde<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of Movie Ratings'</span>)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Rating'</span>)</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Frequency'</span>)</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="report_files/report_16_0.png" class="img-fluid figure-img"></p>
+<figcaption>png</figcaption>
+</figure>
+</div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of ratings per movie</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>ratings_per_movie <span class="op">=</span> ratings.groupby(<span class="st">'movieId'</span>).size()</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>sns.histplot(ratings_per_movie, bins<span class="op">=</span><span class="dv">25</span>, kde<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Number of Ratings per Movie'</span>)</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Number of Ratings'</span>)</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Frequency'</span>)</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="report_files/report_17_0.png" class="img-fluid figure-img"></p>
+<figcaption>png</figcaption>
+</figure>
+</div>
+<p>The histogram highlights the imbalance in the number of ratings across movies, with a small number of highly rated movies and a large number of movies with very few ratings.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  overall average rating</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>average_rating <span class="op">=</span> ratings[<span class="st">'rating'</span>].mean()</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Overall Average Rating: </span><span class="sc">{</span>average_rating<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co"># average rating per movie</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>average_rating_per_movie <span class="op">=</span> ratings.groupby(<span class="st">'movieId'</span>)[<span class="st">'rating'</span>].mean().reset_index()</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(average_rating_per_movie.head())</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="co"># average rating per user</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>average_rating_per_user <span class="op">=</span> ratings.groupby(<span class="st">'userId'</span>)[<span class="st">'rating'</span>].mean().reset_index()</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(average_rating_per_user.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>Overall Average Rating: 3.53
+   movieId    rating
+0        1  3.959323
+1        2  3.268398
+2        3  3.186861
+3        4  3.000000
+4        5  3.143836
+   userId    rating
+0       1  3.742857
+1       2  4.000000
+2       3  4.122995
+3       4  3.571429
+4       5  4.272727</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Top 10 most rated movies</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>ratings_movies <span class="op">=</span> pd.merge(ratings, movies, on<span class="op">=</span><span class="st">'movieId'</span>)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>most_rated_movies <span class="op">=</span> ratings_movies[<span class="st">'title'</span>].value_counts().head(<span class="dv">10</span>)</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span>most_rated_movies.values, y<span class="op">=</span>most_rated_movies.index, palette<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Top 10 Most Rated Movies'</span>)</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Number of Ratings'</span>)</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Movie Title'</span>)</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>C:\Users\ivars\AppData\Local\Temp\ipykernel_19660\3410967599.py:5: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `y` variable to `hue` and set `legend=False` for the same effect.
+
+  sns.barplot(x=most_rated_movies.values, y=most_rated_movies.index, palette='viridis')</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="report_files/report_20_1.png" class="img-fluid figure-img"></p>
+<figcaption>png</figcaption>
+</figure>
+</div>
+<p>The diversity in genres implies that the user base has varied interests, not favoring a single genre</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split genres into separate rows</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>movies_genres <span class="op">=</span> movies[[<span class="st">'movieId'</span>, <span class="st">'title'</span>, <span class="st">'genres'</span>]].copy()</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>movies_genres <span class="op">=</span> movies_genres.drop(movies_genres[movies_genres[<span class="st">'genres'</span>] <span class="op">==</span> <span class="st">'(no genres listed)'</span>].index)</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>movies_genres[<span class="st">'genres'</span>] <span class="op">=</span> movies_genres[<span class="st">'genres'</span>].<span class="bu">str</span>.split(<span class="st">'|'</span>)</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>movies_genres <span class="op">=</span> movies_genres.explode(<span class="st">'genres'</span>)</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge with ratings</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>ratings_genres <span class="op">=</span> pd.merge(ratings, movies_genres, on<span class="op">=</span><span class="st">'movieId'</span>)</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Average rating by genre</span></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>average_ratings_by_genre <span class="op">=</span> ratings_genres.groupby(<span class="st">'genres'</span>)[<span class="st">'rating'</span>].mean().sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span>average_ratings_by_genre.values, y<span class="op">=</span>average_ratings_by_genre.index, palette<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Average Rating by Genre'</span>)</span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Average Rating'</span>)</span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Genre'</span>)</span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>C:\Users\ivars\AppData\Local\Temp\ipykernel_19660\281678378.py:14: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `y` variable to `hue` and set `legend=False` for the same effect.
+
+  sns.barplot(x=average_ratings_by_genre.values, y=average_ratings_by_genre.index, palette='viridis')</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="report_files/report_22_1.png" class="img-fluid figure-img"></p>
+<figcaption>png</figcaption>
+</figure>
+</div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate average rating per movie</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>average_ratings <span class="op">=</span> ratings.groupby(<span class="st">'movieId'</span>)[<span class="st">'rating'</span>].mean()</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the number of ratings per movie</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>ratings_count <span class="op">=</span> ratings.groupby(<span class="st">'movieId'</span>).size()</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">8</span>))</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>plt.scatter(ratings_count, average_ratings, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Number of Ratings'</span>)</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Average Rating'</span>)</span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Number of Ratings vs. Average Rating'</span>)</span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="report_files/report_23_0.png" class="img-fluid figure-img"></p>
+<figcaption>png</figcaption>
+</figure>
+</div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">8</span>))</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>plt.scatter(ratings_count.index, ratings_count, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Movie ID'</span>)</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Number of Ratings'</span>)</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Number of Ratings per Movie'</span>)</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="report_files/report_24_0.png" class="img-fluid figure-img"></p>
+<figcaption>png</figcaption>
+</figure>
+</div>
+<p>This plot helps to see the distribution of the number of ratings per movie directly and identify outliers easily.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the unique movie IDs from the ratings dataset</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>rated_movie_ids <span class="op">=</span> ratings[<span class="st">'movieId'</span>].unique()</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Find movie IDs that are not in the rated_movie_ids</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>unrated_movies <span class="op">=</span> movies[<span class="op">~</span>movies[<span class="st">'movieId'</span>].isin(rated_movie_ids)]</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the unrated movies</span></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(unrated_movies)</span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>unrated_movies_count <span class="op">=</span> unrated_movies.shape[<span class="dv">0</span>]</span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the count of unrated movies</span></span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'The number of unrated movies is: </span><span class="sc">{</span>unrated_movies_count<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>       movieId                                              title  \
+96          98                                    Shopping (1994)   
+113        115  Happiness Is in the Field (Bonheur est dans le...   
+141        143                                       Gospa (1995)   
+391        395                                Desert Winds (1995)   
+397        401                                      Mirage (1995)   
+...        ...                                                ...   
+27273   131254                       Kein Bund für's Leben (2007)   
+27274   131256                      Feuer, Eis &amp; Dosenbier (2002)   
+27275   131258                                 The Pirates (2014)   
+27276   131260                                Rentun Ruusu (2001)   
+27277   131262                                   Innocence (2014)   
+
+                         genres  
+96              Action|Thriller  
+113                      Comedy  
+141                       Drama  
+391       Drama|Fantasy|Romance  
+397             Action|Thriller  
+...                         ...  
+27273                    Comedy  
+27274                    Comedy  
+27275                 Adventure  
+27276        (no genres listed)  
+27277  Adventure|Fantasy|Horror  
+
+[13252 rows x 3 columns]
+The number of unrated movies is: 13252</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>unrated_movies.to_csv(<span class="st">'unrated_movies.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The CSV file unrated_movies.csv will contain the list of movies from the movies.csv file that do not have any corresponding ratings in the ratings.csv file.</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> MultiLabelBinarizer</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the genres string into a list of genres</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>movies[<span class="st">'genres'</span>] <span class="op">=</span> movies[<span class="st">'genres'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.split(<span class="st">'|'</span>))</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Use MultiLabelBinarizer to one-hot encode the genres</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>mlb <span class="op">=</span> MultiLabelBinarizer()</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>genres_encoded <span class="op">=</span> mlb.fit_transform(movies[<span class="st">'genres'</span>])</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>genres_df <span class="op">=</span> pd.DataFrame(genres_encoded, columns<span class="op">=</span>mlb.classes_)</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge the one-hot encoded genres with the original movies dataframe</span></span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>movies <span class="op">=</span> movies.join(genres_df)</span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop the original 'genres' column as it's no longer needed</span></span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>movies.drop(<span class="st">'genres'</span>, axis<span class="op">=</span><span class="dv">1</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(movies.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>   movieId                               title  (no genres listed)  Action  \
+0        1                    Toy Story (1995)                   0       0   
+1        2                      Jumanji (1995)                   0       0   
+2        3             Grumpier Old Men (1995)                   0       0   
+3        4            Waiting to Exhale (1995)                   0       0   
+4        5  Father of the Bride Part II (1995)                   0       0   
+
+   Adventure  Animation  Children  Comedy  Crime  Documentary  ...  Film-Noir  \
+0          1          1         1       1      0            0  ...          0   
+1          1          0         1       0      0            0  ...          0   
+2          0          0         0       1      0            0  ...          0   
+3          0          0         0       1      0            0  ...          0   
+4          0          0         0       1      0            0  ...          0   
+
+   Horror  IMAX  Musical  Mystery  Romance  Sci-Fi  Thriller  War  Western  
+0       0     0        0        0        0       0         0    0        0  
+1       0     0        0        0        0       0         0    0        0  
+2       0     0        0        0        1       0         0    0        0  
+3       0     0        0        0        1       0         0    0        0  
+4       0     0        0        0        0       0         0    0        0  
+
+[5 rows x 22 columns]</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics.pairwise <span class="im">import</span> cosine_similarity</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute cosine similarity matrix for the one-hot encoded genres</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>cosine_sim_matrix <span class="op">=</span> cosine_similarity(genres_df)</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cosine_sim_matrix.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>(27278, 27278)</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select a fixed number of movies (e.g., 20)</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>subset_size <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>subset_movies <span class="op">=</span> movies.sample(subset_size, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the indices of the subset</span></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>subset_indices <span class="op">=</span> subset_movies.index</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the corresponding genres for the subset</span></span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>subset_genres_df <span class="op">=</span> genres_df.iloc[subset_indices]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute cosine similarity matrix for the subset</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>subset_cosine_sim_matrix <span class="op">=</span> cosine_similarity(subset_genres_df)</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to a DataFrame for better handling</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>subset_cosine_sim_df <span class="op">=</span> pd.DataFrame(subset_cosine_sim_matrix, index<span class="op">=</span>subset_movies[<span class="st">'title'</span>], columns<span class="op">=</span>subset_movies[<span class="st">'title'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the heatmap for the subset</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">10</span>))</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>sns.heatmap(subset_cosine_sim_df, cmap<span class="op">=</span><span class="st">'coolwarm'</span>, annot<span class="op">=</span><span class="va">True</span>, fmt<span class="op">=</span><span class="st">".2f"</span>)</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Cosine Similarity Matrix of Selected Movies Based on Genres'</span>)</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">90</span>)</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>plt.yticks(rotation<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="report_files/report_33_0.png" class="img-fluid figure-img"></p>
+<figcaption>png</figcaption>
+</figure>
+</div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_extraction.text <span class="im">import</span> TfidfVectorizer</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>tfidf <span class="op">=</span> TfidfVectorizer(stop_words<span class="op">=</span><span class="st">'english'</span>)</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>movies[<span class="st">'title'</span>] <span class="op">=</span> movies[<span class="st">'title'</span>].fillna(<span class="st">''</span>) </span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>tfidf_matrix <span class="op">=</span> tfidf.fit_transform(movies[<span class="st">'title'</span>])</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tfidf_matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>  (0, 19545)    0.7450014446806167
+  (0, 18333)    0.49928609739142044
+  (0, 156)  0.44236437512014776
+  (1, 156)  0.4327735155916253
+  (1, 9966) 0.9015026811953836
+  (2, 156)  0.33351161626915604
+  (2, 8029) 0.6947320144242862
+  (2, 13781)    0.48350887527744
+  (2, 12253)    0.41513443301592495
+  (3, 156)  0.3523387525432559
+  (3, 20740)    0.5806669392217108
+  (3, 6331) 0.73395048140263
+  (4, 156)  0.3843990627624906
+  (4, 6553) 0.5654748070463544
+  (4, 2663) 0.5708495257469082
+  (4, 9172) 0.45453979154496144
+  (5, 156)  0.5235890685768715
+  (5, 8515) 0.851970942736197
+  (6, 156)  0.44671308996168857
+  (6, 16465)    0.8946772687717512
+  (7, 156)  0.3659037591579004
+  (7, 19418)    0.5736473450078663
+  (7, 8960) 0.7328322881802789
+  (8, 156)  0.40895644947304455
+  (8, 18475)    0.7629323610776246
+  : :
+  (27270, 173)  0.3633973340564821
+  (27271, 16811)    0.8423853845662482
+  (27271, 167)  0.5388755550859347
+  (27272, 5620) 0.4677782188938281
+  (27272, 4812) 0.2887506421782067
+  (27272, 168)  0.22650585687812594
+  (27272, 9836) 0.40486459085940996
+  (27272, 10473)    0.48147146113336603
+  (27272, 7017) 0.5007710021081905
+  (27273, 7301) 0.47268125603508504
+  (27273, 11037)    0.44519155176448366
+  (27273, 174)  0.22476641536118216
+  (27273, 10248)    0.48984189115500054
+  (27273, 2867) 0.5365742191216446
+  (27274, 169)  0.249414048761211
+  (27274, 6682) 0.559104233657297
+  (27274, 5903) 0.559104233657297
+  (27274, 5503) 0.559104233657297
+  (27275, 14714)    0.874972496746573
+  (27275, 181)  0.4841726241094888
+  (27276, 168)  0.3046327051405594
+  (27276, 15890)    0.6734979268560316
+  (27276, 16404)    0.6734979268560316
+  (27277, 9373) 0.8844300176159253
+  (27277, 181)  0.46667284465661163</code></pre>
+<p>Row Index: The index of the document (movie title) in the dataset. Column Index: The index of the term in the vocabulary. TF-IDF Score: The calculated TF-IDF score for that term in that document. To identify important keywords To analyze genres and themes movie similarities</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the IQR</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>Q1 <span class="op">=</span> ratings[<span class="st">'rating'</span>].quantile(<span class="fl">0.25</span>)</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>Q3 <span class="op">=</span> ratings[<span class="st">'rating'</span>].quantile(<span class="fl">0.75</span>)</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>IQR <span class="op">=</span> Q3 <span class="op">-</span> Q1</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the lower and upper bounds for outliers</span></span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>lower_bound <span class="op">=</span> Q1 <span class="op">-</span> <span class="fl">1.5</span> <span class="op">*</span> IQR</span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>upper_bound <span class="op">=</span> Q3 <span class="op">+</span> <span class="fl">1.5</span> <span class="op">*</span> IQR</span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify outliers</span></span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a>outliers <span class="op">=</span> ratings[(ratings[<span class="st">'rating'</span>] <span class="op">&lt;</span> lower_bound) <span class="op">|</span> (ratings[<span class="st">'rating'</span>] <span class="op">&gt;</span> upper_bound)]</span>
+<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(outliers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>         userId  movieId  rating         timestamp
+380           3     2541     1.0  11-12-1999 07:30
+390           3     2643     1.0  14-12-1999 12:54
+394           3     2676     1.0  11-12-1999 07:30
+426           4       32     1.0  24-08-1996 09:31
+540           6     1073     1.0  13-03-1997 17:52
+...         ...      ...     ...               ...
+1048266    7116    32587     0.5  05-02-2006 22:17
+1048281    7117        9     1.0  13-08-1998 14:21
+1048355    7117      590     1.0  14-08-1998 12:18
+1048394    7117     1206     1.0  14-08-1998 16:33
+1048567    7120      153     0.5  02-04-2007 19:28
+
+[48376 rows x 4 columns]</code></pre>
+<p>The bounds for identifying outliers as any rating that is 1.5 times the IQR below the first quartile or above the third quartile.</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a histogram to visualize the distribution of ratings</span></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>sns.histplot(ratings[<span class="st">'rating'</span>], bins<span class="op">=</span><span class="dv">10</span>, kde<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Histogram of Movie Ratings'</span>)</span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Rating'</span>)</span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Frequency'</span>)</span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a scatter plot to see the distribution of ratings by userId</span></span>
+<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">7</span>))</span>
+<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a>plt.scatter(ratings[<span class="st">'userId'</span>], ratings[<span class="st">'rating'</span>], alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">'Ratings'</span>)</span>
+<span id="cb54-15"><a href="#cb54-15" aria-hidden="true" tabindex="-1"></a>plt.scatter(outliers[<span class="st">'userId'</span>], outliers[<span class="st">'rating'</span>], color<span class="op">=</span><span class="st">'red'</span>, label<span class="op">=</span><span class="st">'outliers'</span>)</span>
+<span id="cb54-16"><a href="#cb54-16" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Scatter Plot of Ratings by UserId'</span>)</span>
+<span id="cb54-17"><a href="#cb54-17" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'UserId'</span>)</span>
+<span id="cb54-18"><a href="#cb54-18" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Rating'</span>)</span>
+<span id="cb54-19"><a href="#cb54-19" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb54-20"><a href="#cb54-20" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="report_files/report_38_0.png" class="img-fluid figure-img"></p>
+<figcaption>png</figcaption>
+</figure>
+</div>
+<pre><code>c:\source\Orion_Innovation_internship_repos\MovieLens-recommender\.venv\lib\site-packages\IPython\core\pylabtools.py:152: UserWarning: Creating legend with loc="best" can be slow with large amounts of data.
+  fig.canvas.print_figure(bytes_io, **kw)</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="report_files/report_38_2.png" class="img-fluid figure-img"></p>
+<figcaption>png</figcaption>
+</figure>
+</div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a box plot</span></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>sns.boxplot(x<span class="op">=</span>ratings[<span class="st">'rating'</span>])</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Box Plot of Movie Ratings'</span>)</span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Rating'</span>)</span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="report_files/report_39_0.png" class="img-fluid figure-img"></p>
+<figcaption>png</figcaption>
+</figure>
+</div>
+<p>This indicates that half of the ratings are below 3.5 and half are above There are two outliers on the lower end, with ratings of 1</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge genome scores and tags</span></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>genome_data <span class="op">=</span> pd.merge(g_score, g_tag, on<span class="op">=</span><span class="st">'tagId'</span>)</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(genome_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>          movieId  tagId  relevance           tag
+0               1      1    0.02500           007
+1               1      2    0.02500  007 (series)
+2               1      3    0.05775  18th century
+3               1      4    0.09675         1920s
+4               1      5    0.14675         1930s
+...           ...    ...        ...           ...
+11709763   131170   1124    0.58775       writing
+11709764   131170   1125    0.01075         wuxia
+11709765   131170   1126    0.01575          wwii
+11709766   131170   1127    0.11450        zombie
+11709767   131170   1128    0.02175       zombies
+
+[11709768 rows x 4 columns]</code></pre>
+<div class="sourceCode" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dask.dataframe <span class="im">as</span> dd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>c:\source\Orion_Innovation_internship_repos\MovieLens-recommender\.venv\lib\site-packages\dask\dataframe\__init__.py:31: FutureWarning: 
+Dask dataframe query planning is disabled because dask-expr is not installed.
+
+You can install it with `pip install dask[dataframe]` or `conda install dask`.
+This will raise in a future version.
+
+  warnings.warn(msg, FutureWarning)</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> dd.merge(data, genome_data, on<span class="op">=</span><span class="st">'movieId'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'genres'</span> <span class="kw">in</span> movies.columns:</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Split the genres string into multiple columns</span></span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>    genres_split <span class="op">=</span> movies[<span class="st">'genres'</span>].<span class="bu">str</span>.split(<span class="st">'|'</span>, n<span class="op">=</span>n, expand<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Generate dummy variables for each genre</span></span>
+<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a>    genres_dummies <span class="op">=</span> pd.get_dummies(genres_split, prefix<span class="op">=</span><span class="st">''</span>, prefix_sep<span class="op">=</span><span class="st">''</span>)</span>
+<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Sum the dummy variables to get the total count for each genre</span></span>
+<span id="cb62-9"><a href="#cb62-9" aria-hidden="true" tabindex="-1"></a>    genre_counts <span class="op">=</span> genres_dummies.<span class="bu">sum</span>().sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb62-10"><a href="#cb62-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-11"><a href="#cb62-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot the distribution of genres</span></span>
+<span id="cb62-12"><a href="#cb62-12" aria-hidden="true" tabindex="-1"></a>    genre_counts.plot(kind<span class="op">=</span><span class="st">'bar'</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb62-13"><a href="#cb62-13" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="st">'Distribution of Movie Genres'</span>)</span>
+<span id="cb62-14"><a href="#cb62-14" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">'Genre'</span>)</span>
+<span id="cb62-15"><a href="#cb62-15" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">'Frequency'</span>)</span>
+<span id="cb62-16"><a href="#cb62-16" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
+<span id="cb62-17"><a href="#cb62-17" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb62-18"><a href="#cb62-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"The 'genres' column is not present in the movies dataset."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>---------------------------------------------------------------------------
+
+NotImplementedError                       Traceback (most recent call last)
+
+Cell In[37], line 3
+      1 if 'genres' in movies.columns:
+      2     # Split the genres string into multiple columns
+----&gt; 3     genres_split = movies['genres'].str.split('|', n=-1, expand=True)
+      5     # Generate dummy variables for each genre
+      6     genres_dummies = pd.get_dummies(genres_split, prefix='', prefix_sep='')
+
+
+File c:\source\Orion_Innovation_internship_repos\MovieLens-recommender\.venv\lib\site-packages\dask\dataframe\accessor.py:301, in StringAccessor.split(self, pat, n, expand)
+    295 @derived_from(
+    296     pd.Series.str,
+    297     inconsistencies="``expand=True`` with unknown ``n`` will raise a ``NotImplementedError``",
+    298 )
+    299 def split(self, pat=None, n=-1, expand=False):
+    300     """Known inconsistencies: ``expand=True`` with unknown ``n`` will raise a ``NotImplementedError``."""
+--&gt; 301     return self._split("split", pat=pat, n=n, expand=expand)
+
+
+File c:\source\Orion_Innovation_internship_repos\MovieLens-recommender\.venv\lib\site-packages\dask\dataframe\accessor.py:279, in StringAccessor._split(self, method, pat, n, expand)
+    277 if expand:
+    278     if n == -1:
+--&gt; 279         raise NotImplementedError(
+    280             "To use the expand parameter you must specify the number of "
+    281             "expected splits with the n= parameter. Usually n splits "
+    282             "result in n+1 output columns."
+    283         )
+    284     else:
+    285         delimiter = " " if pat is None else pat
+
+
+NotImplementedError: To use the expand parameter you must specify the number of expected splits with the n= parameter. Usually n splits result in n+1 output columns.</code></pre>
+<div class="sourceCode" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>genres <span class="op">=</span> data[<span class="st">'genres'</span>].<span class="bu">str</span>.get_dummies(sep<span class="op">=</span><span class="st">'|'</span>).<span class="bu">sum</span>().sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>genres.plot(kind<span class="op">=</span><span class="st">'bar'</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of Movie Genres'</span>)</span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Genre'</span>)</span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Frequency'</span>)</span>
+<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>---------------------------------------------------------------------------
+
+AttributeError                            Traceback (most recent call last)
+
+Cell In[43], line 1
+----&gt; 1 genres = data['genres'].str.get_dummies(sep='|').sum().sort_values(ascending=False)
+      2 genres.plot(kind='bar', figsize=(12, 6))
+      3 plt.title('Distribution of Movie Genres')
+
+
+AttributeError: 'StringAccessor' object has no attribute 'get_dummies'</code></pre>
+<div class="sourceCode" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Ratings distribution</span></span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>plt.hist(data[<span class="st">'rating'</span>], bins<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Rating'</span>)</span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Frequency'</span>)</span>
+<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Ratings Distribution'</span>)</span>
+<span id="cb66-7"><a href="#cb66-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="report_files/report_46_0.png" class="img-fluid figure-img"></p>
+<figcaption>png</figcaption>
+</figure>
+</div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>ratings_per_user <span class="op">=</span> ratings.groupby(<span class="st">'userId'</span>)[<span class="st">'rating'</span>].count()</span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>sns.histplot(ratings_per_user, bins<span class="op">=</span><span class="dv">30</span>, kde<span class="op">=</span><span class="va">True</span>, palette<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Number of Ratings per User'</span>)</span>
+<span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Number of Ratings'</span>)</span>
+<span id="cb67-7"><a href="#cb67-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Number of Users'</span>)</span>
+<span id="cb67-8"><a href="#cb67-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>C:\Users\ivars\AppData\Local\Temp\ipykernel_19660\4093904407.py:4: UserWarning: Ignoring `palette` because no `hue` variable has been assigned.
+  sns.histplot(ratings_per_user, bins=30, kde=True, palette='viridis')</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="report_files/report_47_1.png" class="img-fluid figure-img"></p>
+<figcaption>png</figcaption>
+</figure>
+</div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>ratings_per_user <span class="op">=</span> ratings.groupby(<span class="st">'userId'</span>)[<span class="st">'rating'</span>].count()</span>
+<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-6"><a href="#cb69-6" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb69-7"><a href="#cb69-7" aria-hidden="true" tabindex="-1"></a>sns.histplot(ratings_per_user, bins<span class="op">=</span><span class="dv">30</span>, kde<span class="op">=</span><span class="va">True</span>, log_scale<span class="op">=</span>(<span class="va">False</span>, <span class="va">True</span>), palette<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb69-8"><a href="#cb69-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Number of Ratings per User (Logarithmic Scale)'</span>)</span>
+<span id="cb69-9"><a href="#cb69-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Number of Ratings'</span>)</span>
+<span id="cb69-10"><a href="#cb69-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Number of Users'</span>)</span>
+<span id="cb69-11"><a href="#cb69-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>C:\Users\ivars\AppData\Local\Temp\ipykernel_19660\200590994.py:7: UserWarning: Ignoring `palette` because no `hue` variable has been assigned.
+  sns.histplot(ratings_per_user, bins=30, kde=True, log_scale=(False, True), palette='viridis')</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="report_files/report_48_1.png" class="img-fluid figure-img"></p>
+<figcaption>png</figcaption>
+</figure>
+</div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the cumulative distribution</span></span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>cdf <span class="op">=</span> np.cumsum(ratings_per_user.value_counts().sort_index())</span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>cdf <span class="op">=</span> cdf <span class="op">/</span> cdf.iloc[<span class="op">-</span><span class="dv">1</span>]  <span class="co"># Normalize to 1</span></span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a>plt.plot(cdf.index, cdf, marker<span class="op">=</span><span class="st">'o'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>, color<span class="op">=</span><span class="st">'b'</span>)</span>
+<span id="cb71-9"><a href="#cb71-9" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Cumulative Distribution of Ratings per User'</span>)</span>
+<span id="cb71-10"><a href="#cb71-10" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Number of Ratings'</span>)</span>
+<span id="cb71-11"><a href="#cb71-11" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Cumulative Proportion of Users'</span>)</span>
+<span id="cb71-12"><a href="#cb71-12" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb71-13"><a href="#cb71-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="report_files/report_49_0.png" class="img-fluid figure-img"></p>
+<figcaption>png</figcaption>
+</figure>
+</div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter out users with an extremely high number of ratings</span></span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>filtered_ratings_per_user <span class="op">=</span> ratings_per_user[ratings_per_user <span class="op">&lt;</span> <span class="dv">500</span>]</span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>sns.histplot(filtered_ratings_per_user, bins<span class="op">=</span><span class="dv">30</span>, kde<span class="op">=</span><span class="va">True</span>, palette<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Number of Ratings per User (Filtered Outliers)'</span>)</span>
+<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Number of Ratings'</span>)</span>
+<span id="cb72-8"><a href="#cb72-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Number of Users'</span>)</span>
+<span id="cb72-9"><a href="#cb72-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>C:\Users\ivars\AppData\Local\Temp\ipykernel_19660\2081119808.py:5: UserWarning: Ignoring `palette` because no `hue` variable has been assigned.
+  sns.histplot(filtered_ratings_per_user, bins=30, kde=True, palette='viridis')</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="report_files/report_50_1.png" class="img-fluid figure-img"></p>
+<figcaption>png</figcaption>
+</figure>
+</div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.merge(ratings, movies, on<span class="op">=</span><span class="st">'movieId'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate average rating and number of ratings for each movie</span></span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>movie_stats <span class="op">=</span> data.groupby(<span class="st">'title'</span>).agg({<span class="st">'rating'</span>: [<span class="st">'mean'</span>, <span class="st">'count'</span>]})</span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>movie_stats.columns <span class="op">=</span> [<span class="st">'average_rating'</span>, <span class="st">'rating_count'</span>]</span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>movie_stats <span class="op">=</span> movie_stats.reset_index()</span>
+<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few rows of the movie_stats</span></span>
+<span id="cb75-7"><a href="#cb75-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(movie_stats.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>                                               title  average_rating  \
+0                                     Jumanji (1995)        3.268398   
+1  City of Lost Children, The (Cité des enfants p...        4.004464   
+2          Twelve Monkeys (a.k.a. 12 Monkeys) (1995)        3.904628   
+3                        Seven (a.k.a. Se7en) (1995)        4.078090   
+4                         Usual Suspects, The (1995)        4.370482   
+
+   rating_count  
+0          1155  
+1           448  
+2          2312  
+3          2241  
+4          2490  </code></pre>
+<div class="sourceCode" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bar chart of top 10 movies by the number of ratings</span></span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>top_10_movies <span class="op">=</span> movie_stats.sort_values(by<span class="op">=</span><span class="st">'rating_count'</span>, ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">10</span>)</span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span><span class="st">'rating_count'</span>, y<span class="op">=</span><span class="st">'title'</span>, data<span class="op">=</span>top_10_movies, palette<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb77-6"><a href="#cb77-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Top 10 Movies by Number of Ratings'</span>)</span>
+<span id="cb77-7"><a href="#cb77-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Number of Ratings'</span>)</span>
+<span id="cb77-8"><a href="#cb77-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Movie Title'</span>)</span>
+<span id="cb77-9"><a href="#cb77-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>C:\Users\ivars\AppData\Local\Temp\ipykernel_7012\1549310786.py:5: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `y` variable to `hue` and set `legend=False` for the same effect.
+
+  sns.barplot(x='rating_count', y='title', data=top_10_movies, palette='viridis')</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="report_files/report_53_1.png" class="img-fluid figure-img"></p>
+<figcaption>png</figcaption>
+</figure>
+</div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the format of the timestamp column</span></span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ratings[<span class="st">'timestamp'</span>].head())</span>
+<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify the correct format</span></span>
+<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a>ratings[<span class="st">'timestamp'</span>] <span class="op">=</span> pd.to_datetime(ratings[<span class="st">'timestamp'</span>], <span class="bu">format</span><span class="op">=</span><span class="st">'</span><span class="sc">%d</span><span class="st">-%m-%Y %H:%M'</span>)</span>
+<span id="cb79-6"><a href="#cb79-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-7"><a href="#cb79-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract year from the title</span></span>
+<span id="cb79-8"><a href="#cb79-8" aria-hidden="true" tabindex="-1"></a>movies[<span class="st">'year'</span>] <span class="op">=</span> movies[<span class="st">'title'</span>].<span class="bu">str</span>.extract(<span class="vs">r'\((\d</span><span class="sc">{4}</span><span class="vs">)\)'</span>, expand<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb79-9"><a href="#cb79-9" aria-hidden="true" tabindex="-1"></a>movies[<span class="st">'year'</span>] <span class="op">=</span> pd.to_numeric(movies[<span class="st">'year'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>0    02-04-2005 23:53
+1    02-04-2005 23:31
+2    02-04-2005 23:33
+3    02-04-2005 23:32
+4    02-04-2005 23:29
+Name: timestamp, dtype: object</code></pre>
+<div class="sourceCode" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate average rating per movie</span></span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>movie_ratings <span class="op">=</span> data.groupby(<span class="st">'movieId'</span>).agg({<span class="st">'rating'</span>: <span class="st">'mean'</span>, <span class="st">'title'</span>: <span class="st">'first'</span>, <span class="st">'year'</span>: <span class="st">'first'</span>}).reset_index()</span>
+<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-4"><a href="#cb81-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter out movies with less than a certain number of ratings (optional)</span></span>
+<span id="cb81-5"><a href="#cb81-5" aria-hidden="true" tabindex="-1"></a>min_ratings <span class="op">=</span> <span class="dv">50</span>  <span class="co"># for example</span></span>
+<span id="cb81-6"><a href="#cb81-6" aria-hidden="true" tabindex="-1"></a>movie_ratings <span class="op">=</span> data.groupby(<span class="st">'movieId'</span>).<span class="bu">filter</span>(<span class="kw">lambda</span> x: <span class="bu">len</span>(x) <span class="op">&gt;=</span> min_ratings)</span>
+<span id="cb81-7"><a href="#cb81-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-8"><a href="#cb81-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Find top movie per year</span></span>
+<span id="cb81-9"><a href="#cb81-9" aria-hidden="true" tabindex="-1"></a>top_movies_per_year <span class="op">=</span> movie_ratings.loc[movie_ratings.groupby(<span class="st">'year'</span>)[<span class="st">'rating'</span>].idxmax()]</span>
+<span id="cb81-10"><a href="#cb81-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-11"><a href="#cb81-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting</span></span>
+<span id="cb81-12"><a href="#cb81-12" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">8</span>))</span>
+<span id="cb81-13"><a href="#cb81-13" aria-hidden="true" tabindex="-1"></a>sns.barplot(data<span class="op">=</span>top_movies_per_year, x<span class="op">=</span><span class="st">'year'</span>, y<span class="op">=</span><span class="st">'rating'</span>, palette<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb81-14"><a href="#cb81-14" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">90</span>)</span>
+<span id="cb81-15"><a href="#cb81-15" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Top Movies per Year by Average Rating'</span>)</span>
+<span id="cb81-16"><a href="#cb81-16" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Year'</span>)</span>
+<span id="cb81-17"><a href="#cb81-17" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Average Rating'</span>)</span>
+<span id="cb81-18"><a href="#cb81-18" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>C:\Users\ivars\AppData\Local\Temp\ipykernel_5908\3005387069.py:13: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  sns.barplot(data=top_movies_per_year, x='year', y='rating', palette='viridis')</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="report_files/report_55_1.png" class="img-fluid figure-img"></p>
+<figcaption>png</figcaption>
+</figure>
+</div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert timestamp to datetime</span></span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>ratings[<span class="st">'timestamp'</span>] <span class="op">=</span> pd.to_datetime(ratings[<span class="st">'timestamp'</span>], unit<span class="op">=</span><span class="st">'s'</span>)</span>
+<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract year from the title</span></span>
+<span id="cb83-5"><a href="#cb83-5" aria-hidden="true" tabindex="-1"></a>movies[<span class="st">'year'</span>] <span class="op">=</span> movies[<span class="st">'title'</span>].<span class="bu">str</span>.extract(<span class="vs">r'\((\d</span><span class="sc">{4}</span><span class="vs">)\)'</span>, expand<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb83-6"><a href="#cb83-6" aria-hidden="true" tabindex="-1"></a>movies[<span class="st">'year'</span>] <span class="op">=</span> pd.to_numeric(movies[<span class="st">'year'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb83-7"><a href="#cb83-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-8"><a href="#cb83-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge datasets</span></span>
+<span id="cb83-9"><a href="#cb83-9" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.merge(ratings, movies, on<span class="op">=</span><span class="st">'movieId'</span>)</span>
+<span id="cb83-10"><a href="#cb83-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-11"><a href="#cb83-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate average rating per movie</span></span>
+<span id="cb83-12"><a href="#cb83-12" aria-hidden="true" tabindex="-1"></a>movie_ratings <span class="op">=</span> data.groupby([<span class="st">'year'</span>, <span class="st">'movieId'</span>, <span class="st">'title'</span>]).agg({<span class="st">'rating'</span>: <span class="st">'mean'</span>}).reset_index()</span>
+<span id="cb83-13"><a href="#cb83-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-14"><a href="#cb83-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Find top ten movies per year</span></span>
+<span id="cb83-15"><a href="#cb83-15" aria-hidden="true" tabindex="-1"></a>top_ten_movies_per_year <span class="op">=</span> movie_ratings.groupby(<span class="st">'year'</span>).<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.nlargest(<span class="dv">10</span>, <span class="st">'rating'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>C:\Users\ivars\AppData\Local\Temp\ipykernel_5908\116517602.py:15: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  top_ten_movies_per_year = movie_ratings.groupby('year').apply(lambda x: x.nlargest(10, 'rating'))</code></pre>
+<div class="sourceCode" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting</span></span>
+<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">8</span>))</span>
+<span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>top_ten_movies_per_year, x<span class="op">=</span><span class="st">'year'</span>, y<span class="op">=</span><span class="st">'rating'</span>, palette<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb85-4"><a href="#cb85-4" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">90</span>)</span>
+<span id="cb85-5"><a href="#cb85-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Top Ten Movies per Year by Rating'</span>)</span>
+<span id="cb85-6"><a href="#cb85-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Year'</span>)</span>
+<span id="cb85-7"><a href="#cb85-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Rating'</span>)</span>
+<span id="cb85-8"><a href="#cb85-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>C:\Users\ivars\AppData\Local\Temp\ipykernel_5908\4220577195.py:3: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  sns.boxplot(data=top_ten_movies_per_year, x='year', y='rating', palette='viridis')</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="report_files/report_57_1.png" class="img-fluid figure-img"></p>
+<figcaption>png</figcaption>
+</figure>
+</div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract year from title in movies_df</span></span>
+<span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a>movies[<span class="st">'year'</span>] <span class="op">=</span> movies[<span class="st">'title'</span>].<span class="bu">str</span>.extract(<span class="vs">r'\((\d</span><span class="sc">{4}</span><span class="vs">)\)'</span>).astype(<span class="bu">float</span>)</span>
+<span id="cb87-4"><a href="#cb87-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-5"><a href="#cb87-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge ratings with movies on movieId</span></span>
+<span id="cb87-6"><a href="#cb87-6" aria-hidden="true" tabindex="-1"></a>merged_df <span class="op">=</span> pd.merge(ratings, movies[[<span class="st">'movieId'</span>, <span class="st">'year'</span>]], on<span class="op">=</span><span class="st">'movieId'</span>)</span>
+<span id="cb87-7"><a href="#cb87-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate average rating per year</span></span>
+<span id="cb87-8"><a href="#cb87-8" aria-hidden="true" tabindex="-1"></a>avg_ratings_per_year <span class="op">=</span> merged_df.groupby(<span class="st">'year'</span>)[<span class="st">'rating'</span>].mean().reset_index()</span>
+<span id="cb87-9"><a href="#cb87-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-10"><a href="#cb87-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the data</span></span>
+<span id="cb87-11"><a href="#cb87-11" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">8</span>))</span>
+<span id="cb87-12"><a href="#cb87-12" aria-hidden="true" tabindex="-1"></a>plt.bar(avg_ratings_per_year[<span class="st">'year'</span>], avg_ratings_per_year[<span class="st">'rating'</span>], color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb87-13"><a href="#cb87-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Year'</span>)</span>
+<span id="cb87-14"><a href="#cb87-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Average Rating'</span>)</span>
+<span id="cb87-15"><a href="#cb87-15" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Top Movies per Year by Average Rating'</span>)</span>
+<span id="cb87-16"><a href="#cb87-16" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">90</span>)</span>
+<span id="cb87-17"><a href="#cb87-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="report_files/report_58_0.png" class="img-fluid figure-img"></p>
+<figcaption>png</figcaption>
+</figure>
+</div>
+<p>The average ratings before the 1920s, with some years having average ratings close to 5 and others not much rated. From 1920s onwards, the average ratings remain relatively high, mostly between 3 and 4.5. There appears to be a slight decreasing in average ratings for movies from the 2000 to the 2010</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert timestamp to datetime using the correct format</span></span>
+<span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a>ratings[<span class="st">'timestamp'</span>] <span class="op">=</span> pd.to_datetime(ratings[<span class="st">'timestamp'</span>], <span class="bu">format</span><span class="op">=</span><span class="st">'</span><span class="sc">%d</span><span class="st">-%m-%Y %H:%M'</span>)</span>
+<span id="cb88-4"><a href="#cb88-4" aria-hidden="true" tabindex="-1"></a>ratings[<span class="st">'rating_year'</span>] <span class="op">=</span> ratings[<span class="st">'timestamp'</span>].dt.year</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the release year from the title column for each movie</span></span>
+<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'release_year'</span>] <span class="op">=</span> data[<span class="st">'title'</span>].<span class="bu">str</span>.extract(<span class="vs">r'\((\d</span><span class="sc">{4}</span><span class="vs">)\)'</span>).astype(<span class="bu">float</span>)</span>
+<span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-4"><a href="#cb89-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate average rating and number of ratings per movie</span></span>
+<span id="cb89-5"><a href="#cb89-5" aria-hidden="true" tabindex="-1"></a>movie_stats <span class="op">=</span> data.groupby([<span class="st">'title'</span>, <span class="st">'release_year'</span>]).agg({<span class="st">'rating'</span>: [<span class="st">'mean'</span>, <span class="st">'count'</span>]})</span>
+<span id="cb89-6"><a href="#cb89-6" aria-hidden="true" tabindex="-1"></a>movie_stats.columns <span class="op">=</span> [<span class="st">'average_rating'</span>, <span class="st">'rating_count'</span>]</span>
+<span id="cb89-7"><a href="#cb89-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-8"><a href="#cb89-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter movies with at least 50 ratings to ensure relevance</span></span>
+<span id="cb89-9"><a href="#cb89-9" aria-hidden="true" tabindex="-1"></a>popular_movies <span class="op">=</span> movie_stats[movie_stats[<span class="st">'rating_count'</span>] <span class="op">&gt;=</span> <span class="dv">50</span>]</span>
+<span id="cb89-10"><a href="#cb89-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-11"><a href="#cb89-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Get top 10 movies by average rating</span></span>
+<span id="cb89-12"><a href="#cb89-12" aria-hidden="true" tabindex="-1"></a>top_movies <span class="op">=</span> popular_movies.sort_values(by<span class="op">=</span><span class="st">'average_rating'</span>, ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">10</span>).reset_index()</span>
+<span id="cb89-13"><a href="#cb89-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-14"><a href="#cb89-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the figure size and style</span></span>
+<span id="cb89-15"><a href="#cb89-15" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">8</span>))</span>
+<span id="cb89-16"><a href="#cb89-16" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">"whitegrid"</span>)</span>
+<span id="cb89-17"><a href="#cb89-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting</span></span>
+<span id="cb89-18"><a href="#cb89-18" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">8</span>))</span>
+<span id="cb89-19"><a href="#cb89-19" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span><span class="st">'average_rating'</span>, y<span class="op">=</span><span class="st">'title'</span>, data<span class="op">=</span>top_movies, palette<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb89-20"><a href="#cb89-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-21"><a href="#cb89-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the average rating as text on the bars</span></span>
+<span id="cb89-22"><a href="#cb89-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> index, value <span class="kw">in</span> <span class="bu">enumerate</span>(top_movies[<span class="st">'average_rating'</span>]):</span>
+<span id="cb89-23"><a href="#cb89-23" aria-hidden="true" tabindex="-1"></a>    plt.text(value, index, <span class="ss">f'</span><span class="sc">{</span>value<span class="sc">:.2f}</span><span class="ss">'</span>, color<span class="op">=</span><span class="st">'black'</span>, ha<span class="op">=</span><span class="st">"left"</span>)</span>
+<span id="cb89-24"><a href="#cb89-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-25"><a href="#cb89-25" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Average Rating'</span>)</span>
+<span id="cb89-26"><a href="#cb89-26" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Movie Title'</span>)</span>
+<span id="cb89-27"><a href="#cb89-27" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Top 10 Movies by Average Rating'</span>)</span>
+<span id="cb89-28"><a href="#cb89-28" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>C:\Users\ivars\AppData\Local\Temp\ipykernel_10568\214488409.py:19: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `y` variable to `hue` and set `legend=False` for the same effect.
+
+  sns.barplot(x='average_rating', y='title', data=top_movies, palette='viridis')
+
+
+
+&lt;Figure size 1200x800 with 0 Axes&gt;</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="report_files/report_61_2.png" class="img-fluid figure-img"></p>
+<figcaption>png</figcaption>
+</figure>
+</div>
+<p>The list includes a mix of genres: drama, crime, documentary, and war films</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the release year from the title column for each movie</span></span>
+<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'release_year'</span>] <span class="op">=</span> data[<span class="st">'title'</span>].<span class="bu">str</span>.extract(<span class="vs">r'\((\d</span><span class="sc">{4}</span><span class="vs">)\)'</span>).astype(<span class="bu">float</span>)</span>
+<span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-4"><a href="#cb91-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate average rating and number of ratings per movie</span></span>
+<span id="cb91-5"><a href="#cb91-5" aria-hidden="true" tabindex="-1"></a>movie_stats <span class="op">=</span> data.groupby([<span class="st">'title'</span>, <span class="st">'genres'</span>, <span class="st">'release_year'</span>]).agg({<span class="st">'rating'</span>: [<span class="st">'mean'</span>, <span class="st">'count'</span>]})</span>
+<span id="cb91-6"><a href="#cb91-6" aria-hidden="true" tabindex="-1"></a>movie_stats.columns <span class="op">=</span> [<span class="st">'average_rating'</span>, <span class="st">'rating_count'</span>]</span>
+<span id="cb91-7"><a href="#cb91-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-8"><a href="#cb91-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter movies with at least 50 ratings to ensure relevance</span></span>
+<span id="cb91-9"><a href="#cb91-9" aria-hidden="true" tabindex="-1"></a>popular_movies <span class="op">=</span> movie_stats[movie_stats[<span class="st">'rating_count'</span>] <span class="op">&gt;=</span> <span class="dv">50</span>]</span>
+<span id="cb91-10"><a href="#cb91-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-11"><a href="#cb91-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Get top 10 movies by average rating</span></span>
+<span id="cb91-12"><a href="#cb91-12" aria-hidden="true" tabindex="-1"></a>top_movies <span class="op">=</span> popular_movies.sort_values(by<span class="op">=</span><span class="st">'average_rating'</span>, ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">10</span>).reset_index()</span>
+<span id="cb91-13"><a href="#cb91-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-14"><a href="#cb91-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the figure size and style</span></span>
+<span id="cb91-15"><a href="#cb91-15" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">8</span>))</span>
+<span id="cb91-16"><a href="#cb91-16" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">"whitegrid"</span>)</span>
+<span id="cb91-17"><a href="#cb91-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-18"><a href="#cb91-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the bar plot</span></span>
+<span id="cb91-19"><a href="#cb91-19" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span>top_movies[<span class="st">'average_rating'</span>], y<span class="op">=</span>top_movies[<span class="st">'title'</span>], hue<span class="op">=</span>top_movies[<span class="st">'genres'</span>], dodge<span class="op">=</span><span class="va">False</span>, palette<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb91-20"><a href="#cb91-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-21"><a href="#cb91-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Add title and labels</span></span>
+<span id="cb91-22"><a href="#cb91-22" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Top 10 Movies by Average Rating and Genre'</span>)</span>
+<span id="cb91-23"><a href="#cb91-23" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Average Rating'</span>)</span>
+<span id="cb91-24"><a href="#cb91-24" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Movie Title'</span>)</span>
+<span id="cb91-25"><a href="#cb91-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-26"><a href="#cb91-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the release year in the plot</span></span>
+<span id="cb91-27"><a href="#cb91-27" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> index, value <span class="kw">in</span> <span class="bu">enumerate</span>(top_movies[<span class="st">'average_rating'</span>]):</span>
+<span id="cb91-28"><a href="#cb91-28" aria-hidden="true" tabindex="-1"></a>    plt.text(value, index, <span class="ss">f' (</span><span class="sc">{</span><span class="bu">int</span>(top_movies[<span class="st">"release_year"</span>].iloc[index])<span class="sc">}</span><span class="ss">)'</span>, color<span class="op">=</span><span class="st">'black'</span>, va<span class="op">=</span><span class="st">"center"</span>)</span>
+<span id="cb91-29"><a href="#cb91-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-30"><a href="#cb91-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
+<span id="cb91-31"><a href="#cb91-31" aria-hidden="true" tabindex="-1"></a>plt.legend(title<span class="op">=</span><span class="st">'Genre'</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">1.05</span>, <span class="dv">1</span>), loc<span class="op">=</span><span class="st">'upper left'</span>)</span>
+<span id="cb91-32"><a href="#cb91-32" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="report_files/report_63_0.png" class="img-fluid figure-img"></p>
+<figcaption>png</figcaption>
+</figure>
+</div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Explode the genres to separate rows</span></span>
+<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'genres'</span>] <span class="op">=</span> data[<span class="st">'genres'</span>].<span class="bu">str</span>.split(<span class="st">'|'</span>)</span>
+<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> data.explode(<span class="st">'genres'</span>)</span>
+<span id="cb92-4"><a href="#cb92-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-5"><a href="#cb92-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate average rating and number of ratings per genre</span></span>
+<span id="cb92-6"><a href="#cb92-6" aria-hidden="true" tabindex="-1"></a>genre_stats <span class="op">=</span> data.groupby(<span class="st">'genres'</span>).agg({<span class="st">'rating'</span>: [<span class="st">'mean'</span>, <span class="st">'count'</span>]})</span>
+<span id="cb92-7"><a href="#cb92-7" aria-hidden="true" tabindex="-1"></a>genre_stats.columns <span class="op">=</span> [<span class="st">'average_rating'</span>, <span class="st">'rating_count'</span>]</span>
+<span id="cb92-8"><a href="#cb92-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-9"><a href="#cb92-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter genres with at least 50 ratings to ensure relevance</span></span>
+<span id="cb92-10"><a href="#cb92-10" aria-hidden="true" tabindex="-1"></a>popular_genres <span class="op">=</span> genre_stats[genre_stats[<span class="st">'rating_count'</span>] <span class="op">&gt;=</span> <span class="dv">50</span>]</span>
+<span id="cb92-11"><a href="#cb92-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-12"><a href="#cb92-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort genres by average rating</span></span>
+<span id="cb92-13"><a href="#cb92-13" aria-hidden="true" tabindex="-1"></a>sorted_genres <span class="op">=</span> popular_genres.sort_values(by<span class="op">=</span><span class="st">'average_rating'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb92-14"><a href="#cb92-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-15"><a href="#cb92-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the figure size and style</span></span>
+<span id="cb92-16"><a href="#cb92-16" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">8</span>))</span>
+<span id="cb92-17"><a href="#cb92-17" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">"whitegrid"</span>)</span>
+<span id="cb92-18"><a href="#cb92-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-19"><a href="#cb92-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the bar plot for average rating by genre</span></span>
+<span id="cb92-20"><a href="#cb92-20" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb92-21"><a href="#cb92-21" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span>sorted_genres[<span class="st">'average_rating'</span>], y<span class="op">=</span>sorted_genres.index, palette<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb92-22"><a href="#cb92-22" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Average Rating by Genre'</span>)</span>
+<span id="cb92-23"><a href="#cb92-23" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Average Rating'</span>)</span>
+<span id="cb92-24"><a href="#cb92-24" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Genre'</span>)</span>
+<span id="cb92-25"><a href="#cb92-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-26"><a href="#cb92-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the bar plot for number of ratings by genre</span></span>
+<span id="cb92-27"><a href="#cb92-27" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb92-28"><a href="#cb92-28" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span>sorted_genres[<span class="st">'rating_count'</span>], y<span class="op">=</span>sorted_genres.index, palette<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb92-29"><a href="#cb92-29" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Number of Ratings by Genre'</span>)</span>
+<span id="cb92-30"><a href="#cb92-30" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Number of Ratings'</span>)</span>
+<span id="cb92-31"><a href="#cb92-31" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Genre'</span>)</span>
+<span id="cb92-32"><a href="#cb92-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
+<span id="cb92-33"><a href="#cb92-33" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb92-34"><a href="#cb92-34" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>C:\Users\ivars\AppData\Local\Temp\ipykernel_18508\964985804.py:21: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `y` variable to `hue` and set `legend=False` for the same effect.
+
+  sns.barplot(x=sorted_genres['average_rating'], y=sorted_genres.index, palette='viridis')
+C:\Users\ivars\AppData\Local\Temp\ipykernel_18508\964985804.py:28: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `y` variable to `hue` and set `legend=False` for the same effect.
+
+  sns.barplot(x=sorted_genres['rating_count'], y=sorted_genres.index, palette='viridis')</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="report_files/report_64_1.png" class="img-fluid figure-img"></p>
+<figcaption>png</figcaption>
+</figure>
+</div>
+<p>The top graph helps you see which genres have the highest average ratings. The bottom graph helps you see how many ratings movies in each genre have received. The genres, like IMAX and Western movies, have a very low number of ratings</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate average rating and number of ratings per movie</span></span>
+<span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a>movie_stats <span class="op">=</span> data.groupby([<span class="st">'movieId'</span>, <span class="st">'title'</span>, <span class="st">'genres'</span>]).agg({<span class="st">'rating'</span>: [<span class="st">'mean'</span>, <span class="st">'count'</span>]})</span>
+<span id="cb94-4"><a href="#cb94-4" aria-hidden="true" tabindex="-1"></a>movie_stats.columns <span class="op">=</span> [<span class="st">'average_rating'</span>, <span class="st">'rating_count'</span>]</span>
+<span id="cb94-5"><a href="#cb94-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-6"><a href="#cb94-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter movies with at least 50 ratings to ensure relevance</span></span>
+<span id="cb94-7"><a href="#cb94-7" aria-hidden="true" tabindex="-1"></a>popular_movies <span class="op">=</span> movie_stats[movie_stats[<span class="st">'rating_count'</span>] <span class="op">&gt;=</span> <span class="dv">50</span>]</span>
+<span id="cb94-8"><a href="#cb94-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-9"><a href="#cb94-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Get top 10 movies by average rating</span></span>
+<span id="cb94-10"><a href="#cb94-10" aria-hidden="true" tabindex="-1"></a>top_movies <span class="op">=</span> popular_movies.sort_values(by<span class="op">=</span><span class="st">'average_rating'</span>, ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">10</span>).reset_index()</span>
+<span id="cb94-11"><a href="#cb94-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-12"><a href="#cb94-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract genres of the top 10 movies</span></span>
+<span id="cb94-13"><a href="#cb94-13" aria-hidden="true" tabindex="-1"></a>top_movies[<span class="st">'genres'</span>] <span class="op">=</span> top_movies[<span class="st">'genres'</span>].<span class="bu">str</span>.split(<span class="st">'|'</span>)</span>
+<span id="cb94-14"><a href="#cb94-14" aria-hidden="true" tabindex="-1"></a>top_genres <span class="op">=</span> top_movies.explode(<span class="st">'genres'</span>)</span>
+<span id="cb94-15"><a href="#cb94-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-16"><a href="#cb94-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the occurrences of each genre in the top 10 movies</span></span>
+<span id="cb94-17"><a href="#cb94-17" aria-hidden="true" tabindex="-1"></a>genre_counts <span class="op">=</span> top_genres[<span class="st">'genres'</span>].value_counts()</span>
+<span id="cb94-18"><a href="#cb94-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-19"><a href="#cb94-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the figure size and style</span></span>
+<span id="cb94-20"><a href="#cb94-20" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb94-21"><a href="#cb94-21" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">"whitegrid"</span>)</span>
+<span id="cb94-22"><a href="#cb94-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-23"><a href="#cb94-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the bar plot for genres of the top 10 movies</span></span>
+<span id="cb94-24"><a href="#cb94-24" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span>genre_counts.values, y<span class="op">=</span>genre_counts.index, palette<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb94-25"><a href="#cb94-25" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Genres of the Top 10 Movies by Average Rating'</span>)</span>
+<span id="cb94-26"><a href="#cb94-26" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Number of Movies'</span>)</span>
+<span id="cb94-27"><a href="#cb94-27" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Genre'</span>)</span>
+<span id="cb94-28"><a href="#cb94-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-29"><a href="#cb94-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
+<span id="cb94-30"><a href="#cb94-30" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>C:\Users\ivars\AppData\Local\Temp\ipykernel_18508\3422463229.py:23: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `y` variable to `hue` and set `legend=False` for the same effect.
+
+  sns.barplot(x=genre_counts.values, y=genre_counts.index, palette='viridis')</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="report_files/report_66_1.png" class="img-fluid figure-img"></p>
+<figcaption>png</figcaption>
+</figure>
+</div>
+</section>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
